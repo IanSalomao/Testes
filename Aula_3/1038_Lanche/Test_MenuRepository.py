@@ -1,8 +1,8 @@
-from pytest import mark
 from Menu import Menu
+from Order import Order
 from MenuRepository import MenuRepository
 
-@mark.skip
+
 def test_set_menu_item():
     # Arrange
     menu_repository = MenuRepository()
@@ -26,14 +26,11 @@ def test_check_if_itens_exists():
     menu_repository = MenuRepository()
     menu_repository.menu_itens = []
     menu1 = Menu(1, "Test 1", 10)
+    order = Order(1,5)
+    
     # Act
-
-    menu_repository.set_menu_item(Menu(1, "Test 1", 10))
-    resultOK = menu_repository.check_if_itens_exists(1)
-    resultNOK = menu_repository.check_if_itens_exists(2)
-    print(menu_repository)
+    menu_repository.set_menu_item(menu1)
 
     # Assert
-    assert len(menu_repository.menu_itens) == 1
-    assert resultOK == True
-    assert resultNOK == False
+    assert menu_repository.check_if_itens_exists(order)
+
